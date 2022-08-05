@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Акции
+model Promotion {
+  id   Int  @id @default(autoincrement()) // ИД, актоинкремент
+  title String // заголовок
+  image String // путь к картинке (пока поиск решения для реализации)
+  text String // текст описания акйии
+  theme Theme @relation(fields: [themeId], references: [id]) // связь с тематикой
+  themeId Int // ид тематики
+  beginDate DateTime @default(now()) // дата начала
+  endDate DateTime @default(now()) // дата окончания
+  createdAt DateTime @default(now()) // дата добавления
+  updatedAt DateTime @default(now()) // дата изменения
+  tags PromotionOnTag[] // тэги
+  cities PromotionOnCities[] // города
+}
+
+// Города
+model City {
+  id   Int  @id @default(autoincrement()) // ИД, актоинкремент
+  name String // наименование города
+  createdAt DateTime @default(now()) // дата добавления
+  updatedAt DateTime @default(now()) // дата изменения
+  promotions PromotionOnCities[] // акции
+}
+
+// Тематики
+model Theme {
+  id   Int  @id @default(autoincrement())
+  title String // наименование
+  description String // описание
+  createdAt DateTime @default(now()) // дата добавления
+  updatedAt DateTime @default(now()) // дата изменения
+  promotions Promotion[] // акции
+}
+
+// Теги
+model Tag {
+  id  Int @id @default(autoincrement()) // ИД, автоинкремент
+  name  String // наименование тега
+  promotions PromotionOnTag[] // акции
+}
+
+// Многие ко многим тэги к акциям
+model PromotionOnTag {
+  @@id([promotionId, tagId]) // ид
+  promotion Promotion @relation(fields: [promotionId], references: [id]) // Связь с акциями
+  promotionId Int // ИД акции
+  tag Tag @relation(fields: [tagId], references: [id]) // Связь с тегами
+  tagId Int // ИД тега
+  createdAt DateTime @default(now()) // дата добавления
+  updatedAt DateTime @default(now()) // дата изменения
+}
+
+model PromotionOnCities {
+  @@id([promotionId, cityId]) // ид
+  promotion Promotion @relation(fields: [promotionId], references: [id]) // Связь с акциями
+  promotionId Int // ИД акции
+  city  City @relation(fields: [cityId], references: [id]) // Связь с городами
+  cityId Int // ИД города
+  createdAt DateTime @default(now()) // дата добавления
+  updatedAt DateTime @default(now()) // дата изменения
+}

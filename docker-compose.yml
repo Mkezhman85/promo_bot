@@ -1,0 +1,12 @@
+version: '3'
+services:
+  pgdb:
+    image: postgres:14
+    restart: always
+    ports:
+      - 5434:5432 # если порт 5432 занят можно указать 5433:5432
+    environment:
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata # место хранения БД. Сейчас задана текущий каталог в проекте

@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 class App {
 	async init(): Promise<void> {
 		await prisma.$connect();
-		createBot();
+		await createBot();
 	}
 }
 

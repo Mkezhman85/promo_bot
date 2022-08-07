@@ -4,7 +4,7 @@
   "description": "Демо проект бота акционных предложений",
   "main": "index.js",
   "scripts": {
-    "start": "npm ci && node dist/index.js",
+    "start": "node dist/index.js",
     "lint": "eslint ./src**",
     "lint:fix": "eslint ./src** --fix",
     "dev": "nodemon",

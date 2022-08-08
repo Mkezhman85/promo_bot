@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Promotion {
+  id   Int  @id @default(autoincrement())
+  title String
+  image String
+  text String
+  theme Theme @relation(fields: [themeId], references: [id])
+  themeId Int
+  beginDate DateTime @default(now())
+  endDate DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tags PromotionOnTag[]
+  cities PromotionOnCities[]
+}
+
+model City {
+  id   Int  @id @default(autoincrement())
+  name String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  promotions PromotionOnCities[]
+}
+
+model Theme {
+  id   Int  @id @default(autoincrement())
+  title String
+  description String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  promotions Promotion[]
+}
+
+model Tag {
+  id  Int @id @default(autoincrement())
+  name  String
+  promotions PromotionOnTag[]
+}
+
+model PromotionOnTag {
+  @@id([promotionId, tagId])
+  promotion Promotion @relation(fields: [promotionId], references: [id])
+  promotionId Int
+  tag Tag @relation(fields: [tagId], references: [id])
+  tagId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PromotionOnCities {
+  @@id([promotionId, cityId])
+  promotion Promotion @relation(fields: [promotionId], references: [id])
+  promotionId Int
+  city  City @relation(fields: [cityId], references: [id])
+  cityId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

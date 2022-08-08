@@ -17,7 +17,8 @@ class App {
     init() {
         return __awaiter(this, void 0, void 0, function* () {
             yield prisma.$connect();
-            (0, bot_1.createBot)();
+            yield (0, bot_1.getData)();
+            yield (0, bot_1.createBot)();
         });
     }
 }

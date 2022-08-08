@@ -17,7 +17,7 @@ model Promotion {
   beginDate DateTime @default(now())
   endDate DateTime @default(now())
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   tags PromotionOnTag[]
   cities PromotionOnCities[]
 }
@@ -26,7 +26,7 @@ model City {
   id   Int  @id @default(autoincrement())
   name String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   promotions PromotionOnCities[]
 }
 
@@ -35,7 +35,7 @@ model Theme {
   title String
   description String
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   promotions Promotion[]
 }
 
@@ -52,7 +52,7 @@ model PromotionOnTag {
   tag Tag @relation(fields: [tagId], references: [id])
   tagId Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model PromotionOnCities {
@@ -62,5 +62,5 @@ model PromotionOnCities {
   city  City @relation(fields: [cityId], references: [id])
   cityId Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

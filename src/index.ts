@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
 import { createBot } from './bot';
-import { getData } from '../services/test.service';
+import { getData } from './services/test.service';
 
 const prisma = new PrismaClient();
 

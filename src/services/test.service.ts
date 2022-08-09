@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-const getData = async () => {
+const getData = async (): Promise<string[]> => {
 	const prisma = new PrismaClient();
 	const data = await prisma.promotion.findMany();
 	const titles = [];

@@ -1,13 +1,13 @@
 import { inject, injectable } from 'inversify';
 import { BaseController } from '../../common/base.controller';
-import { ILogger } from '../../logger/logger.interface';
+import { ILogger } from '../../infrastructure/logger/logger.interface';
 import { TYPES } from '../../types';
 import { Request, Response, NextFunction } from 'express';
-import { HTTPError } from '../../errors/http-error.class';
 import { ValidateMiddleware } from '../../common/validate.middleware';
 import { TopicCreateDto } from './dto/topic-add.dto';
-import { ITopicService } from './topic.service.interface';
-import { ITopicController } from './topic.controller.interface';
+import { ITopicController } from './interfaces/topic.controller.interface';
+import { ITopicService } from './interfaces/topic.service.interface';
+import { HTTPError } from '../../infrastructure/errors/http-error.class';
 
 @injectable()
 export class TopicController extends BaseController implements ITopicController {

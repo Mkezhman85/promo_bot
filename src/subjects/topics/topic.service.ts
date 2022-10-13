@@ -1,10 +1,10 @@
 import { ThemeModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
-import { ILogger } from '../../logger/logger.interface';
+import { ILogger } from '../../infrastructure/logger/logger.interface';
 import { TYPES } from '../../types';
 import { TopicCreateDto } from './dto/topic-add.dto';
+import { ITopicRepository } from './interfaces/topic.repository.interface';
 import { Theme } from './topic.entity';
-import { ITopicRepository } from './topic.repository.interface';
 
 @injectable()
 export class TopicService {

@@ -1,9 +1,9 @@
 import { CityModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
-import { PrismaService } from '../../database/prisma.service';
+import { PrismaService } from '../../infrastructure/database/prisma.service';
 import { TYPES } from '../../types';
 import { City } from './city.entity';
-import { ICityRepository } from './city.repository.interface';
+import { ICityRepository } from './interfaces/city.repository.interface';
 
 @injectable()
 export class CityRepository implements ICityRepository {

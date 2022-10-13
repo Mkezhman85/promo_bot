@@ -1,5 +1,5 @@
 import { PromotionModel } from '@prisma/client';
-import { Promotion } from './promotion.entity';
+import { Promotion } from '../promotion.entity';
 
 export interface IPromotionRepository {
 	createPromotion: (promotion: Promotion) => Promise<PromotionModel>;

@@ -1,10 +1,10 @@
 import { CityModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
-import { ILogger } from '../../logger/logger.interface';
+import { ILogger } from '../../infrastructure/logger/logger.interface';
 import { TYPES } from '../../types';
 import { City } from './city.entity';
-import { ICityRepository } from './city.repository.interface';
 import { CityCreateDto } from './dto/city-add.dto';
+import { ICityRepository } from './interfaces/city.repository.interface';
 
 @injectable()
 export class CityService {

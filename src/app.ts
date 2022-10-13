@@ -1,12 +1,12 @@
 import 'dotenv/config';
-import { ILogger } from './logger/logger.interface';
 import 'reflect-metadata';
+import { ILogger } from './infrastructure/logger/logger.interface';
 import { inject, injectable } from 'inversify';
 import { TYPES } from './types';
-import { PrismaService } from './database/prisma.service';
-import { IConfigService } from './config/config.service.interface';
 import { IBotService } from './bot/bot.service.interface';
 import { IServerService } from './server/server.interface';
+import { IConfigService } from './infrastructure/config/config.service.interface';
+import { PrismaService } from './infrastructure/database/prisma.service';
 
 @injectable()
 export class App {

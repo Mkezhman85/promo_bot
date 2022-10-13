@@ -1,10 +1,10 @@
 import { PromotionModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
-import { ILogger } from '../../logger/logger.interface';
+import { ILogger } from '../../infrastructure/logger/logger.interface';
 import { TYPES } from '../../types';
 import { PromotionCreateDto } from './dto/promotion-create.dto';
+import { IPromotionRepository } from './interfaces/promotion.repository.interface';
 import { Promotion } from './promotion.entity';
-import { IPromotionRepository } from './promotion.repository.interface';
 
 @injectable()
 export class PromotionService {

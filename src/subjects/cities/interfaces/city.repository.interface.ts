@@ -1,5 +1,5 @@
 import { CityModel } from '@prisma/client';
-import { City } from './city.entity';
+import { City } from '../city.entity';
 
 export interface ICityRepository {
 	createCity: (city: City) => Promise<CityModel>;

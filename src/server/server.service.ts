@@ -1,19 +1,19 @@
 import 'reflect-metadata';
 import express, { Express } from 'express';
 import { inject, injectable } from 'inversify';
-import { ILogger } from '../logger/logger.interface';
+import { ILogger } from '../infrastructure/logger/logger.interface';
 import { TYPES } from '../types';
 import { IServerService } from './server.interface';
 import { Server } from 'http';
 import { UserController } from '../subjects/users/user.controller';
-import { IExeptionFilter } from '../errors/exeption.filter.interface';
 import { json } from 'body-parser';
 import { AuthMiddleware } from '../common/auth.middleware';
-import { IConfigService } from '../config/config.service.interface';
-import { PrismaService } from '../database/prisma.service';
 import { CityController } from '../subjects/cities/city.controller';
 import { PromotionController } from '../subjects/promotions/promotion.controller';
 import { TopicController } from '../subjects/topics/topic.controller';
+import { IExeptionFilter } from '../infrastructure/errors/exeption.filter.interface';
+import { IConfigService } from '../infrastructure/config/config.service.interface';
+import { PrismaService } from '../infrastructure/database/prisma.service';
 
 @injectable()
 export class ServerService implements IServerService {

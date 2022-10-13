@@ -1,9 +1,9 @@
 import { ThemeModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
-import { PrismaService } from '../../database/prisma.service';
+import { PrismaService } from '../../infrastructure/database/prisma.service';
 import { TYPES } from '../../types';
+import { ITopicRepository } from './interfaces/topic.repository.interface';
 import { Theme } from './topic.entity';
-import { ITopicRepository } from './topic.repository.interface';
 
 @injectable()
 export class TopicRepository implements ITopicRepository {

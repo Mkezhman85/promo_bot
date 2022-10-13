@@ -4,17 +4,17 @@ import LocalSession from 'telegraf-session-local';
 import { IMyContext } from './sessions.interface';
 import { IBotService } from './bot.service.interface';
 const { leave, enter } = Scenes.Stage;
-import { ILogger } from '../logger/logger.interface';
+import { ILogger } from '../infrastructure/logger/logger.interface';
 import { TYPES } from '../types';
 import { injectable, inject } from 'inversify';
 import 'reflect-metadata';
-import { IConfigService } from '../config/config.service.interface';
-import { IUserService } from '../subjects/users/users.service.interface';
 import { commands } from './bot_command';
-import { ICityService } from '../subjects/cities/city.service.interface';
-import { ITopicService } from '../subjects/topics/topic.service.interface';
-import { IPromotionService } from '../subjects/promotions/promotion.service.interface';
+import { ICityService } from '../subjects/cities/interfaces/city.service.interface';
 import { InlineKeyboardButton } from 'telegraf/typings/core/types/typegram';
+import { IConfigService } from '../infrastructure/config/config.service.interface';
+import { IUserService } from '../subjects/users/interfaces/users.service.interface';
+import { ITopicService } from '../subjects/topics/interfaces/topic.service.interface';
+import { IPromotionService } from '../subjects/promotions/interfaces/promotion.service.interface';
 
 @injectable()
 export class BotService implements IBotService {

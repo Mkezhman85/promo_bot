@@ -1,5 +1,5 @@
 import { PromotionModel } from '@prisma/client';
-import { PromotionCreateDto } from './dto/promotion-create.dto';
+import { PromotionCreateDto } from '../dto/promotion-create.dto';
 
 export interface IPromotionService {
 	createPromotion: (dto: PromotionCreateDto) => Promise<PromotionModel | null>;

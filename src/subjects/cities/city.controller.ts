@@ -1,13 +1,13 @@
 import { inject, injectable } from 'inversify';
 import { BaseController } from '../../common/base.controller';
-import { ILogger } from '../../logger/logger.interface';
+import { ILogger } from '../../infrastructure/logger/logger.interface';
 import { TYPES } from '../../types';
 import { Request, Response, NextFunction } from 'express';
-import { ICityController } from './city.controller.interface';
-import { ICityService } from './city.service.interface';
+import { ICityController } from './interfaces/city.controller.interface';
+import { ICityService } from './interfaces/city.service.interface';
 import { CityCreateDto } from './dto/city-add.dto';
-import { HTTPError } from '../../errors/http-error.class';
 import { ValidateMiddleware } from '../../common/validate.middleware';
+import { HTTPError } from '../../infrastructure/errors/http-error.class';
 
 @injectable()
 export class CityController extends BaseController implements ICityController {

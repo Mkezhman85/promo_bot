@@ -1,13 +1,13 @@
 import { inject, injectable } from 'inversify';
 import { BaseController } from '../../common/base.controller';
-import { ILogger } from '../../logger/logger.interface';
+import { ILogger } from '../../infrastructure/logger/logger.interface';
 import { TYPES } from '../../types';
 import { Request, Response, NextFunction } from 'express';
-import { HTTPError } from '../../errors/http-error.class';
 import { ValidateMiddleware } from '../../common/validate.middleware';
-import { IPromotionController } from './promotion.controller.interface';
-import { IPromotionService } from './promotion.service.interface';
+import { IPromotionController } from './interfaces/promotion.controller.interface';
 import { PromotionCreateDto } from './dto/promotion-create.dto';
+import { IPromotionService } from './interfaces/promotion.service.interface';
+import { HTTPError } from '../../infrastructure/errors/http-error.class';
 
 @injectable()
 export class PromotionController extends BaseController implements IPromotionController {

@@ -1,11 +1,11 @@
 import { PromotionModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
-import { PrismaService } from '../../database/prisma.service';
+import { PrismaService } from '../../infrastructure/database/prisma.service';
 import { TYPES } from '../../types';
-import { ICityService } from '../cities/city.service.interface';
-import { ITopicService } from '../topics/topic.service.interface';
+import { ICityService } from '../cities/interfaces/city.service.interface';
+import { ITopicService } from '../topics/interfaces/topic.service.interface';
+import { IPromotionRepository } from './interfaces/promotion.repository.interface';
 import { Promotion } from './promotion.entity';
-import { IPromotionRepository } from './promotion.repository.interface';
 
 @injectable()
 export class PromotionRepository implements IPromotionRepository {

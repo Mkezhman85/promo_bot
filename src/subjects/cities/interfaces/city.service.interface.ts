@@ -1,5 +1,5 @@
 import { CityModel } from '@prisma/client';
-import { CityCreateDto } from './dto/city-add.dto';
+import { CityCreateDto } from '../dto/city-add.dto';
 
 export interface ICityService {
 	createCity: (dto: CityCreateDto) => Promise<CityModel | null>;

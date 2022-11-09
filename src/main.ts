@@ -33,10 +33,18 @@ import { IConfigService } from './infrastructure/config/config.service.interface
 import { PrismaService } from './infrastructure/database/prisma.service';
 import { ExeptionFilter } from './infrastructure/errors/exeption.filter';
 import { ConfigService } from './infrastructure/config/config.service';
+import { GetCityScene } from './bot/scenes/getCityScene';
+import { SceneGenerate } from './bot/scene_generate';
+import { GetTopicScene } from './bot/scenes/getTopicScene';
+import { GetPromotionsScene } from './bot/scenes/getPromotionsScene';
 
 export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(TYPES.ILogger).to(LoggerService);
 	bind<BotService>(TYPES.BotService).to(BotService);
+	bind<SceneGenerate>(TYPES.SceneGenerate).to(SceneGenerate);
+	bind<GetCityScene>(TYPES.GetCityScene).to(GetCityScene);
+	bind<GetTopicScene>(TYPES.GetTopicScene).to(GetTopicScene);
+	bind<GetPromotionsScene>(TYPES.GetPromotionsScene).to(GetPromotionsScene);
 	bind<IConfigService>(TYPES.ConfigService).to(ConfigService).inSingletonScope();
 	bind<PrismaService>(TYPES.PrismaService).to(PrismaService).inSingletonScope();
 	bind<ServerService>(TYPES.ServerService).to(ServerService).inSingletonScope();

@@ -19,4 +19,8 @@ export const TYPES = {
 	TopicController: Symbol.for('TopicController'),
 	TopicService: Symbol.for('TopicService'),
 	TopicRepository: Symbol.for('TopicRepository'),
+	GetCityScene: Symbol.for('GetCityScene'),
+	GetTopicScene: Symbol.for('GetTopicScene'),
+	GetPromotionsScene: Symbol.for('GetPromotionsScene'),
+	SceneGenerate: Symbol.for('SceneGenerate'),
 };

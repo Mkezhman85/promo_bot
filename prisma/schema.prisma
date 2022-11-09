@@ -7,36 +7,48 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Promotion {
+model UserModel {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  name String
+  city CityModel @relation(fields: [cityId], references: [id])
+  cityId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PromotionModel {
   id   Int  @id @default(autoincrement())
-  title String
-  image String
+  title String @unique
   text String
-  theme Theme @relation(fields: [themeId], references: [id])
+  city CityModel @relation(fields: [cityId], references: [id])
+  cityId Int
+  theme ThemeModel @relation(fields: [themeId], references: [id])
   themeId Int
   beginDate DateTime @default(now())
   endDate DateTime @default(now())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   tags PromotionOnTag[]
-  cities PromotionOnCities[]
 }
 
-model City {
+model CityModel {
   id   Int  @id @default(autoincrement())
-  name String
+  name String @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  promotions PromotionOnCities[]
+  promotions PromotionModel[]
+  users UserModel[]
 }
 
-model Theme {
+model ThemeModel {
   id   Int  @id @default(autoincrement())
-  title String
+  title String @unique
   description String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  promotions Promotion[]
+  promotions PromotionModel[]
 }
 
 model Tag {
@@ -47,20 +59,10 @@ model Tag {
 
 model PromotionOnTag {
   @@id([promotionId, tagId])
-  promotion Promotion @relation(fields: [promotionId], references: [id])
+  promotion PromotionModel @relation(fields: [promotionId], references: [id])
   promotionId Int
   tag Tag @relation(fields: [tagId], references: [id])
   tagId Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model PromotionOnCities {
-  @@id([promotionId, cityId])
-  promotion Promotion @relation(fields: [promotionId], references: [id])
-  promotionId Int
-  city  City @relation(fields: [cityId], references: [id])
-  cityId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
